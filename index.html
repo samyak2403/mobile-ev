@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Mobile Device</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="device-container">
+        <!-- Phone Frame -->
+        <div class="phone-frame">
+            <!-- Screen -->
+            <div class="screen">
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <div class="status-left">
+                        <span class="time" id="current-time">9:41</span>
+                    </div>
+                    <div class="status-right">
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi"></i>
+                        <span class="battery">
+                            <i class="fas fa-battery-three-quarters"></i>
+                            <span id="battery-level">87%</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Lock Screen -->
+                <div class="lock-screen" id="lock-screen">
+                    <div class="lock-time">
+                        <div class="lock-hour" id="lock-hour">9:41</div>
+                        <div class="lock-date" id="lock-date">Monday, January 15</div>
+                    </div>
+                    <div class="lock-wallpaper"></div>
+                    <div class="lock-bottom">
+                        <div class="lock-slider">
+                            <div class="slider-track">
+                                <div class="slider-button" id="unlock-slider">
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                                <span class="slider-text">Slide to unlock</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Home Screen -->
+                <div class="home-screen" id="home-screen">
+                    <div class="wallpaper"></div>
+                    
+                    <!-- App Grid -->
+                    <div class="app-grid">
+                        <div class="app-icon" data-app="phone">
+                            <i class="fas fa-phone"></i>
+                            <span>Phone</span>
+                        </div>
+                        <div class="app-icon" data-app="messages">
+                            <i class="fas fa-comment"></i>
+                            <span>Messages</span>
+                        </div>
+                        <div class="app-icon" data-app="camera">
+                            <i class="fas fa-camera"></i>
+                            <span>Camera</span>
+                        </div>
+                        <div class="app-icon" data-app="gallery">
+                            <i class="fas fa-images"></i>
+                            <span>Gallery</span>
+                        </div>
+                        <div class="app-icon" data-app="calculator">
+                            <i class="fas fa-calculator"></i>
+                            <span>Calculator</span>
+                        </div>
+                        <div class="app-icon" data-app="weather">
+                            <i class="fas fa-cloud-sun"></i>
+                            <span>Weather</span>
+                        </div>
+                        <div class="app-icon" data-app="music">
+                            <i class="fas fa-music"></i>
+                            <span>Music</span>
+                        </div>
+                        <div class="app-icon" data-app="notes">
+                            <i class="fas fa-sticky-note"></i>
+                            <span>Notes</span>
+                        </div>
+                        <div class="app-icon" data-app="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </div>
+                        <div class="app-icon" data-app="clock">
+                            <i class="fas fa-clock"></i>
+                            <span>Clock</span>
+                        </div>
+                        <div class="app-icon" data-app="contacts">
+                            <i class="fas fa-address-book"></i>
+                            <span>Contacts</span>
+                        </div>
+                        <div class="app-icon" data-app="browser">
+                            <i class="fas fa-globe"></i>
+                            <span>Browser</span>
+                        </div>
+                    </div>
+
+                    <!-- Dock -->
+                    <div class="dock">
+                        <div class="dock-icon" data-app="phone">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="dock-icon" data-app="messages">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <div class="dock-icon" data-app="camera">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="dock-icon" data-app="music">
+                            <i class="fas fa-music"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Apps Container -->
+                <div class="apps-container" id="apps-container">
+                    <!-- Phone App -->
+                    <div class="app phone-app" id="phone-app">
+                        <div class="app-header">
+                            <button class="back-btn" onclick="closeApp()">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h2>Phone</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="phone-keypad">
+                                <div class="phone-display">
+                                    <input type="text" id="phone-number" placeholder="Enter number" readonly>
+                                </div>
+                                <div class="keypad">
+                                    <button class="key" onclick="addDigit('1')">1</button>
+                                    <button class="key" onclick="addDigit('2')">2<span>ABC</span></button>
+                                    <button class="key" onclick="addDigit('3')">3<span>DEF</span></button>
+                                    <button class="key" onclick="addDigit('4')">4<span>GHI</span></button>
+                                    <button class="key" onclick="addDigit('5')">5<span>JKL</span></button>
+                                    <button class="key" onclick="addDigit('6')">6<span>MNO</span></button>
+                                    <button class="key" onclick="addDigit('7')">7<span>PQRS</span></button>
+                                    <button class="key" onclick="addDigit('8')">8<span>TUV</span></button>
+                                    <button class="key" onclick="addDigit('9')">9<span>WXYZ</span></button>
+                                    <button class="key" onclick="addDigit('*')">*</button>
+                                    <button class="key" onclick="addDigit('0')">0<span>+</span></button>
+                                    <button class="key" onclick="addDigit('#')">#</button>
+                                </div>
+                                <div class="phone-actions">
+                                    <button class="call-btn" onclick="makeCall()">
+                                        <i class="fas fa-phone"></i>
+                                    </button>
+                                    <button class="delete-btn" onclick="deleteDigit()">
+                                        <i class="fas fa-backspace"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator App -->
+                    <div class="app calculator-app" id="calculator-app">
+                        <div class="app-header">
+                            <button class="back-btn" onclick="closeApp()">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h2>Calculator</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="calculator">
+                                <div class="calc-display">
+                                    <input type="text" id="calc-result" readonly>
+                                </div>
+                                <div class="calc-buttons">
+                                    <button class="calc-btn clear" onclick="clearCalc()">C</button>
+                                    <button class="calc-btn" onclick="calcOperation('±')">±</button>
+                                    <button class="calc-btn" onclick="calcOperation('%')">%</button>
+                                    <button class="calc-btn operator" onclick="calcOperation('/')">÷</button>
+                                    
+                                    <button class="calc-btn" onclick="calcNumber('7')">7</button>
+                                    <button class="calc-btn" onclick="calcNumber('8')">8</button>
+                                    <button class="calc-btn" onclick="calcNumber('9')">9</button>
+                                    <button class="calc-btn operator" onclick="calcOperation('*')">×</button>
+                                    
+                                    <button class="calc-btn" onclick="calcNumber('4')">4</button>
+                                    <button class="calc-btn" onclick="calcNumber('5')">5</button>
+                                    <button class="calc-btn" onclick="calcNumber('6')">6</button>
+                                    <button class="calc-btn operator" onclick="calcOperation('-')">−</button>
+                                    
+                                    <button class="calc-btn" onclick="calcNumber('1')">1</button>
+                                    <button class="calc-btn" onclick="calcNumber('2')">2</button>
+                                    <button class="calc-btn" onclick="calcNumber('3')">3</button>
+                                    <button class="calc-btn operator" onclick="calcOperation('+')">+</button>
+                                    
+                                    <button class="calc-btn zero" onclick="calcNumber('0')">0</button>
+                                    <button class="calc-btn" onclick="calcNumber('.')">.</button>
+                                    <button class="calc-btn operator equals" onclick="calculateResult()">=</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Camera App -->
+                    <div class="app camera-app" id="camera-app">
+                        <div class="app-header">
+                            <button class="back-btn" onclick="closeApp()">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h2>Camera</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="camera-container">
+                                <video id="camera-feed" autoplay playsinline></video>
+                                <canvas id="camera-canvas" style="display: none;"></canvas>
+                                <div class="camera-controls">
+                                    <button class="camera-btn" onclick="switchCamera()">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                    <button class="capture-btn" onclick="takePicture()">
+                                        <i class="fas fa-circle"></i>
+                                    </button>
+                                    <button class="camera-btn" onclick="openGallery()">
+                                        <i class="fas fa-images"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weather App -->
+                    <div class="app weather-app" id="weather-app">
+                        <div class="app-header">
+                            <button class="back-btn" onclick="closeApp()">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h2>Weather</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="weather-container">
+                                <div class="weather-current">
+                                    <div class="weather-location">New York</div>
+                                    <div class="weather-temp">22°C</div>
+                                    <div class="weather-desc">Partly Cloudy</div>
+                                    <div class="weather-icon">
+                                        <i class="fas fa-cloud-sun"></i>
+                                    </div>
+                                </div>
+                                <div class="weather-details">
+                                    <div class="weather-item">
+                                        <i class="fas fa-eye"></i>
+                                        <span>Visibility</span>
+                                        <span>10 km</span>
+                                    </div>
+                                    <div class="weather-item">
+                                        <i class="fas fa-tint"></i>
+                                        <span>Humidity</span>
+                                        <span>65%</span>
+                                    </div>
+                                    <div class="weather-item">
+                                        <i class="fas fa-wind"></i>
+                                        <span>Wind</span>
+                                        <span>15 km/h</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Music App -->
+                    <div class="app music-app" id="music-app">
+                        <div class="app-header">
+                            <button class="back-btn" onclick="closeApp()">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h2>Music</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="music-player">
+                                <div class="album-art">
+                                    <i class="fas fa-music"></i>
+                                </div>
+                                <div class="song-info">
+                                    <h3>Sample Song</h3>
+                                    <p>Unknown Artist</p>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                                <div class="time-info">
+                                    <span>0:00</span>
+                                    <span>3:45</span>
+                                </div>
+                                <div class="music-controls">
+                                    <button class="music-btn">
+                                        <i class="fas fa-backward"></i>
+                                    </button>
+                                    <button class="play-btn" onclick="toggleMusic()">
+                                        <i class="fas fa-play" id="play-icon"></i>
+                                    </button>
+                                    <button class="music-btn">
+                                        <i class="fas fa-forward"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notes App -->
+                    <div class="app notes-app" id="notes-app">
+                        <div class="app-header">
+                            <button class="back-btn" onclick="closeApp()">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h2>Notes</h2>
+                            <button class="add-note-btn" onclick="addNote()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="app-content">
+                            <div class="notes-container">
+                                <div class="note-item">
+                                    <div class="note-title">Welcome Note</div>
+                                    <div class="note-preview">This is your first note. Tap to edit...</div>
+                                    <div class="note-date">Today</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings App -->
+                    <div class="app settings-app" id="settings-app">
+                        <div class="app-header">
+                            <button class="back-btn" onclick="closeApp()">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h2>Settings</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="settings-list">
+                                <div class="setting-item">
+                                    <i class="fas fa-wifi"></i>
+                                    <span>Wi-Fi</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                                <div class="setting-item">
+                                    <i class="fas fa-bluetooth"></i>
+                                    <span>Bluetooth</span>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <i class="fas fa-volume-up"></i>
+                                    <span>Sound</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                                <div class="setting-item">
+                                    <i class="fas fa-moon"></i>
+                                    <span>Dark Mode</span>
+                                    <label class="switch">
+                                        <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode()">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <i class="fas fa-battery-half"></i>
+                                    <span>Battery</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messages App -->
+                    <div class="app messages-app" id="messages-app">
+                        <div class="app-header">
+                            <button class="back-btn" onclick="closeApp()">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h2>Messages</h2>
+                            <button class="add-note-btn" onclick="addMessage()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="app-content">
+                            <div class="messages-container">
+                                <div class="message-thread">
+                                    <div class="message-header">
+                                        <div class="contact-avatar">👤</div>
+                                        <div class="contact-info">
+                                            <div class="contact-name">John Doe</div>
+                                            <div class="contact-status">Online</div>
+                                        </div>
+                                    </div>
+                                    <div class="messages-list" id="messages-list">
+                                        <div class="message received">
+                                            <div class="message-content">Hey! How are you?</div>
+                                            <div class="message-time">10:30 AM</div>
+                                        </div>
+                                        <div class="message sent">
+                                            <div class="message-content">I'm good, thanks! How about you?</div>
+                                            <div class="message-time">10:32 AM</div>
+                                        </div>
+                                    </div>
+                                    <div class="message-input-container">
+                                        <input type="text" id="message-input" placeholder="Type a message...">
+                                        <button onclick="sendMessage()">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery App -->
+                    <div class="app gallery-app" id="gallery-app">
+                        <div class="app-header">
+                            <button class="back-btn" onclick="closeApp()">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h2>Gallery</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="gallery-container">
+                                <div class="gallery-grid" id="gallery-grid">
+                                    <div class="gallery-item">
+                                        <div class="gallery-placeholder">
+                                            <i class="fas fa-image"></i>
+                                            <span>Photo 1</span>
+                                        </div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <div class="gallery-placeholder">
+                                            <i class="fas fa-image"></i>
+                                            <span>Photo 2</span>
+                                        </div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <div class="gallery-placeholder">
+                                            <i class="fas fa-image"></i>
+                                            <span>Photo 3</span>
+                                        </div>
+                                    </div>
+                                    <div class="gallery-item">
+                                        <div class="gallery-placeholder">
+                                            <i class="fas fa-image"></i>
+                                            <span>Photo 4</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clock App -->
+                    <div class="app clock-app" id="clock-app">
+                        <div class="app-header">
+                            <button class="back-btn" onclick="closeApp()">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h2>Clock</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="clock-container">
+                                <div class="digital-clock">
+                                    <div class="clock-time" id="clock-time">12:00:00</div>
+                                    <div class="clock-date" id="clock-date">Monday, January 15, 2024</div>
+                                </div>
+                                <div class="clock-features">
+                                    <div class="clock-feature">
+                                        <i class="fas fa-stopwatch"></i>
+                                        <span>Stopwatch</span>
+                                        <button onclick="toggleStopwatch()">Start</button>
+                                    </div>
+                                    <div class="clock-feature">
+                                        <i class="fas fa-hourglass-half"></i>
+                                        <span>Timer</span>
+                                        <button onclick="setTimer()">Set</button>
+                                    </div>
+                                    <div class="clock-feature">
+                                        <i class="fas fa-bell"></i>
+                                        <span>Alarm</span>
+                                        <button onclick="setAlarm()">Add</button>
+                                    </div>
+                                </div>
+                                <div class="stopwatch-display" id="stopwatch-display" style="display: none;">
+                                    <div class="stopwatch-time">00:00:00</div>
+                                    <div class="stopwatch-controls">
+                                        <button onclick="startStopwatch()">Start</button>
+                                        <button onclick="stopStopwatch()">Stop</button>
+                                        <button onclick="resetStopwatch()">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contacts App -->
+                    <div class="app contacts-app" id="contacts-app">
+                        <div class="app-header">
+                            <button class="back-btn" onclick="closeApp()">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h2>Contacts</h2>
+                            <button class="add-note-btn" onclick="addContact()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="app-content">
+                            <div class="contacts-container">
+                                <div class="contact-search">
+                                    <input type="text" placeholder="Search contacts..." id="contact-search">
+                                </div>
+                                <div class="contacts-list" id="contacts-list">
+                                    <div class="contact-item">
+                                        <div class="contact-avatar">👤</div>
+                                        <div class="contact-info">
+                                            <div class="contact-name">John Doe</div>
+                                            <div class="contact-phone">+1 (555) 123-4567</div>
+                                        </div>
+                                        <button onclick="callContact('+1 (555) 123-4567')">
+                                            <i class="fas fa-phone"></i>
+                                        </button>
+                                    </div>
+                                    <div class="contact-item">
+                                        <div class="contact-avatar">👩</div>
+                                        <div class="contact-info">
+                                            <div class="contact-name">Jane Smith</div>
+                                            <div class="contact-phone">+1 (555) 987-6543</div>
+                                        </div>
+                                        <button onclick="callContact('+1 (555) 987-6543')">
+                                            <i class="fas fa-phone"></i>
+                                        </button>
+                                    </div>
+                                    <div class="contact-item">
+                                        <div class="contact-avatar">👨</div>
+                                        <div class="contact-info">
+                                            <div class="contact-name">Mike Johnson</div>
+                                            <div class="contact-phone">+1 (555) 456-7890</div>
+                                        </div>
+                                        <button onclick="callContact('+1 (555) 456-7890')">
+                                            <i class="fas fa-phone"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Browser App -->
+                    <div class="app browser-app" id="browser-app">
+                        <div class="app-header">
+                            <button class="back-btn" onclick="closeApp()">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <h2>Browser</h2>
+                        </div>
+                        <div class="app-content">
+                            <div class="browser-container">
+                                <div class="browser-navigation">
+                                    <button onclick="browserBack()">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                    <button onclick="browserForward()">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                    <button onclick="browserRefresh()">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                    <div class="address-bar">
+                                        <input type="text" id="address-bar" placeholder="Enter URL or search..." value="https://www.google.com">
+                                        <button onclick="browserGo()">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="browser-content">
+                                    <iframe id="browser-frame" src="https://www.google.com" style="width: 100%; height: 100%; border: none;"></iframe>
+                                </div>
+                                <div class="browser-bookmarks">
+                                    <button onclick="browserNavigate('https://www.google.com')">Google</button>
+                                    <button onclick="browserNavigate('https://www.youtube.com')">YouTube</button>
+                                    <button onclick="browserNavigate('https://www.github.com')">GitHub</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Home Indicator -->
+                <div class="home-indicator"></div>
+            </div>
+
+            <!-- Physical Buttons -->
+            <div class="physical-buttons">
+                <div class="power-button"></div>
+                <div class="volume-buttons">
+                    <div class="volume-up"></div>
+                    <div class="volume-down"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
